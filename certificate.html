@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Certificates</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="icon" type="image/x-icon" href="./images/Logo.png">
+
+    <style>
+        /* Your existing CSS styles */
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.max-width {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    margin: 0 -10px; /* Adjusted margin for inside grid spacing */
+}
+
+.card {
+    flex: 0 0 auto;
+    width: calc(33.33% - 20px);
+    background: #fff;
+    border-radius: 8px;
+    margin: 0 10px; /* Adjusted margin for inside grid spacing */
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.box {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.box p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+}
+
+.box {
+    padding: 20px;
+}
+
+.box img {
+    width: 100%;
+    height: auto;
+}
+
+.box p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+
+#prevBtn,
+#nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    outline: none;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+#projects {
+    position: relative;
+}
+
+#prevBtn:hover,
+#nextBtn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.box {
+    padding: 20px;
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a slight shadow effect */
+}
+.box .first{
+    margin-bottom: 30px;
+}
+.box .second{
+    margin-bottom: 4px;
+}
+.box .three{
+    margin-bottom: 28px;
+}
+.box .four{
+    margin-bottom: 36px;
+}
+.box .five{
+    margin-bottom: 51px;
+}
+@media (max-width: 768px) {
+    .box .first {
+        margin-bottom: 20px; /* Adjusted margin for mobile view */
+    }
+    .box .second {
+        margin-bottom: 10px; /* Adjusted margin for mobile view */
+    }
+    .box .three {
+        margin-bottom: 15px; /* Adjusted margin for mobile view */
+    }
+    .box .four {
+        margin-bottom: 25px; /* Adjusted margin for mobile view */
+    }
+    .box .five {
+        margin-bottom: 35px; /* Adjusted margin for mobile view */
+    }
+}
+@media screen and (max-width: 576px) {
+    .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .box img {
+        margin-bottom: 10px; /* Add some spacing between the image and text */
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card {
+        width: calc(100% - 20px);
+    }
+}
+/* Add this CSS inside your media query for max-width: 576px */
+@media screen and (max-width: 576px) {
+    .box img {
+        margin: 0 auto; /* Center the images horizontally */
+        display: block; /* Ensure images take full width of container */
+    }
+    .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .box img {
+        margin-bottom: 10px; /* Add some spacing between the image and text */
+    }
+}
+
+.image-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+/* Add this CSS to your existing styles */
+.card:hover .box img {
+    animation: blink 0.5s infinite alternate;
+}
+
+.card .box img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .box img {
+    transform: scale(1.05); /* Increase the size of the image on hover */
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* Style changes for images outside the grid */
+.image-container img {
+    max-width: 100%; /* Adjust the width to fit the container */
+    max-height: 100%; /* Adjust the height to fit the container */
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-container img:hover {
+    transform: scale(1.1); /* Increase the size of the image on hover */
+}
+
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <section class="projects" id="projects">
+        <div class="max-width">
+            <h2 class="title fadein">Certificates</h2>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="card">
+                        <div class="box">
+                            <img src="image\Programming In Java-nptel.jpg" alt="Java" onclick="showImage('./images/data analytic_page-0001.jpg')">
+                            <p>NPTEL</p>
+                            <p>Programming in Java</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="box">
+                            <img src="image\Introduction To Internet Of Things.jpg" alt="IOT" onclick="showImage('image\Introduction To Internet Of Things.jpg')"class="second">
+                            <p>NPTEL</p>
+                            <p>Introduction to Internet of Things</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="box">
+                            <img src="image\deeplearning.jpg" alt="Great learning" onclick="showImage('image\deeplearning.jpg')" class="first">
+                            <p>Great learning Platform</p>
+                            <p>Introduction of Deep Learning</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="prevBtn">&larr;</button>
+            <button id="nextBtn">&rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="image-container" id="imageContainer" onclick="hideImage()">
+        <span class="close-btn">&times;</span>
+        <img id="expandedImg">
+    </div>
+
+    <script>
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const carouselInner = document.querySelector('.carousel-inner');
+        let slideIndex = 0;
+
+        nextBtn.addEventListener('click', () => {
+            slideIndex++;
+            showSlides();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            slideIndex--;
+            showSlides();
+        });
+
+        function showSlides() {
+            const maxSlides = Math.ceil(carouselInner.scrollWidth / carouselInner.clientWidth);
+
+            if (slideIndex >= maxSlides) {
+                slideIndex = 0;
+            } else if (slideIndex < 0) {
+                slideIndex = maxSlides - 1;
+            }
+
+            const slideWidth = carouselInner.clientWidth;
+            carouselInner.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+        }
+
+        function showImage(imageSrc) {
+            const imageContainer = document.getElementById('imageContainer');
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.src = imageSrc;
+            imageContainer.style.display = 'flex';
+        }
+
+        function hideImage() {
+            const imageContainer = document.getElementById('imageContainer');
+            imageContainer.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+
